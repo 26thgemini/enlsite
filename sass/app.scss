@@ -1,0 +1,732 @@
+@import "variables";
+@import "mixins";
+
+
+*{ font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif; }
+html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    background-color: black;
+}
+body { -webkit-tap-highlight-color: rgba(white, 0.2); }
+@-moz-keyframes pulse {
+    from { -moz-transform: scale(1); transform: scale(1); }
+    50% { -moz-transform: scale(1.2); transform: scale(1.2); }
+    100% { -moz-transform: scale(1); transform: scale(1); }
+}
+::-moz-selection { text-shadow: none;  background: #fcfcfc;  background: rgba(white, 0.2); }
+
+::selection { text-shadow: none; background: #fcfcfc;  background: rgba(white, 0.2); }
+img::selection {  background: transparent; }
+img::-moz-selection { background: transparent; }
+
+// Custom scrollbar ***********************************************************************
+body::-webkit-scrollbar { width: 1em; }
+body::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); }
+body::-webkit-scrollbar-thumb {  background-color: $green-bg;   outline: 1px solid $orange; }
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 35px;
+    text-transform: uppercase;
+    font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px; }
+p {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.5;
+    @media(min-width:768px) {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+}
+a {
+    color: $green;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: darken($green,20%);
+    }
+}
+.light { font-weight: 400; }
+// lazy load css **************************************************************************
+.lazy {
+  display: none;
+}
+
+// custom class ***************************************************************************
+.col-padding {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.col-padding2 {
+  padding-right: 1px;
+  padding-left: 1px;
+    @media(min-width: 990px){
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+}
+.m-bottom {
+  margin-bottom: 25px;
+}
+// Custom Buttons CSS *********************************************************************
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid white;
+  border-radius: 100% !important;
+  font-size: 40px;
+  color: white;
+  background: transparent;
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+  &:hover,
+  &:focus {
+    outline: none;
+    color: white;
+    background: rgba(white, 0.1);
+  }
+  i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+  }
+  &:hover {
+    i.animated {
+      -webkit-animation-name: pulse;
+      -moz-animation-name: pulse;
+      -webkit-animation-duration: 1.5s;
+      -moz-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-timing-function: linear;
+    }
+  }
+}
+.btn-default {
+  color: $white;
+  background-color: $green-bg;
+  border: 2px solid $blue;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+    &:hover, &:focus {
+      border: 2px solid $green;
+      color: $orange;
+      background-color: $black-bg;
+      }
+}
+.btn-new-agent {
+  color: $white;
+  font-size: 20px;
+  background-color: $black-bg;
+  border: 2px solid $blue;
+  margin-right: 10px;
+    &:focus, &:hover{
+      border-color: $orange;
+      color: $orange;
+      background-color: $blue-bg;
+      }
+    @media(max-width:768px){
+      margin-right: 7px;
+      font-size: 16px;
+      }
+}
+.btn-explore {
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 10px;
+    @media(max-width:768px){
+      margin-right: 7px;
+      font-size: 16px;
+      }
+}
+
+
+// Navbar custom CSS **********************************************************************
+.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(white, 0.3);
+    text-transform: uppercase;
+    background-color: black;
+    .navbar-toggle {
+      color: $green;
+      font-size: 1.5em;
+      padding: 2px 8px;
+      border: 1px solid $green;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      background-color: $blue-bg;
+      margin-right: 5px;
+        &:focus,
+        &:active {
+            outline: none;
+        }
+    }
+    .navbar-brand {
+        font-weight: 700;
+        margin-top: -5px;
+        &:focus {
+            outline: none;
+        }
+        @media(max-width: 768px){
+          margin-top: 0;
+          color: $green;
+          &:focus, &:hover {
+            color: white;
+          }
+        }
+        img {
+          display: inline;
+          margin: -5px 5px 0 0;
+          padding: 0;
+          height: 40px;
+          width: 40px;
+            @media(max-width: 768px){
+              height: 35px;
+              width: 35px;
+            }
+        }
+    }
+    a {
+        color: white;
+      &:hover,
+      &:active,
+      &:focus{ color: $green;}
+    }
+    .nav {
+        li {
+            a {
+                -webkit-transition: background .3s ease-in-out;
+                -moz-transition: background .3s ease-in-out;
+                transition: background .3s ease-in-out;
+                font-size: .8em;
+                padding: 15px 7px;
+                &:hover, &:focus, &:active {
+                    color: rgba($green, 0.8);
+                    outline: none;
+                    background-color: transparent;
+                }
+            }
+            &.active {
+                outline: none;
+                a {
+                    background-color: rgba($green, 0.3);
+                    color: $orange;
+                    &:hover {
+                        background-color: $green-bg;
+                    }
+                }
+            }
+            @media(max-width: 767px) {
+                border-top: 2px solid $green;
+                  .last-child {
+                    border-bottom: 2px solid $green;
+                  }
+                  a {
+                    padding: 15px 20px;
+                    &:hover,
+                    &:focus{color: white !important;}
+                  }
+            }
+        }
+    }
+    @media(min-width:768px) {
+        padding: 20px 0 10px 0;
+        border-bottom: none;
+        letter-spacing: 1px;
+        background: rgba(black, .3);
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+        &.top-nav-collapse {
+            padding: 0;
+            background: black;
+            border-bottom: 2px solid $green-bg;
+        }
+    }
+}
+// INTRO **********************************************************************************
+.intro {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    background: url(../img/banner-bg.jpg) no-repeat bottom center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    .intro-body {
+        display: table-cell;
+        vertical-align: middle;
+        .brand-heading {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        .intro-text {
+            font-size: 18px;
+            margin-bottom: 75px;
+        }
+    }
+    @media(min-width:768px) {
+        height: 100%;
+        padding: 100px 0;
+        .intro-body {
+            .brand-heading {
+                font-size: 65px;
+                margin-bottom: 10px;
+            }
+            .intro-text {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 100px;
+            }
+        }
+    }
+    @media(max-width: 680px){
+      .intro-body{
+          .brand-heading{
+              font-size: 30px;
+          }
+          .intro-text{
+              font-size: 16px;
+              margin-bottom: 50px;
+          }
+      }
+   }
+}
+// CONTENT SECTION CSS ********************************************************************
+.content-section {
+    padding-top: 100px;
+    @media(min-width:767px) {
+        padding-top: 250px;
+    }
+}
+// Home CSS *******************************************************************************
+#home {
+  padding-top: 100px;
+  padding-bottom: 200px;
+    @media(max-width: 990px){
+        padding-bottom: 125px;
+    }
+    @media(max-width: 768px){
+      padding-bottom: 75px;
+    }
+    @media(max-width: 490px){
+      padding-bottom: 25px;
+    }
+  .thumbnail{
+      background-color: $blue-bg;
+      border: 2px solid $blue;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      padding: 10px 4px;
+  }
+
+}
+// Build and Destroy **********************************************************************
+#build-destroy {
+    width: 100%;
+    padding-top: 100px;
+    //padding-bottom: 200px;
+    color: white;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    h1.bd-heading{
+        font-size: 1.5em;
+        @media(max-width: 768px){
+            font-size: 1.2em;
+        }
+    }
+    .build-destroy {
+        border: 1px solid transparent;
+        padding: 10px;
+    }
+    #bd_content {
+        min-height: 230px;
+        overflow: auto;
+        border: 1px solid $blue;
+        margin-bottom: 20px;
+        background-color: $blue-bg;
+        padding: 10px;
+    }
+    // Nav Pills for build and destroy
+    .nav-pills > li {
+        float: none;
+        margin: 5px 0;
+        font-size: 12px;
+        @media(max-width: 768px){
+            font-size: 10px;
+        }
+      }
+    .nav-pills > li > a {
+        color: $white;
+        font-size: 12px;
+        border-radius: 0;
+        border: 1px solid $blue;
+        background-color: $blue-bg;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        &:focus, &:hover {
+            color: $orange;
+            background-color: $blue-bg;
+            border: 1px solid $blue;
+        }
+        @media(max-width: 680px){
+            font-size: 9px;
+            padding: 5px;
+        }
+        @media (max-width: 400px) {
+            font-size: 0.8em;
+        }
+      }
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        color: $orange;
+        background-color: $blue-bg;
+        border: 1px solid $blue;
+    }
+}
+// Build and destory content CSS **********************************************************
+.bd_content {
+    border: 1px solid transparent;
+    padding: 0;
+    background-color: transparent;
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: $white;
+        font-size: 1em;
+        text-align: left;
+    }
+    p {
+        font-size: 12px;
+        font-weight: 400;
+        text-indent: 30px;
+        margin-bottom: 10px;
+        @media(max-width: 768px){
+            font-size: 10px;
+        }
+    }
+    li {
+        font-size: 10px;
+    }
+    .img-thumbnail {
+        background-color: transparent;
+        border: 1px solid transparent;
+    }
+    .thumbnail {
+        color: $white;
+        display: block;
+        padding: 2px;
+        margin-bottom: 25px;
+        background-color: black;
+        border: 1px solid transparent;
+        border-radius: 0;
+        -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+        transition: border .2s ease-in-out;
+        @media(max-width: 767px){
+            padding: 2px 0;
+        }
+        img {
+            margin: 10px auto;
+        }
+    }
+    .thumbnail > img,
+    .thumbnail a > img {
+        margin-right: auto;
+        margin-left: auto;
+        background-color: transparent;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+    a.thumbnail:hover,
+    a.thumbnail:focus,
+    a.thumbnail.active {
+        border-color: #337ab7;
+    }
+    .thumbnail .caption {
+        padding: 7px;
+        color: $white;
+    }
+}
+// Glyph hacks css ************************************************************************
+  #glyph-hacks {
+    padding-top: 100px;
+    //padding-bottom: 200px;
+    color: $white;
+      h1{
+        text-align: center;
+        font-size: 1.5em;
+          @media(max-width: 768px){
+            font-size: 1.2em;
+          }
+        }
+      .img-responsive {
+          background-color: $black-bg;
+          border: 2px solid $blue;
+          -webkit-border-radius: 0;
+          -moz-border-radius: 0;
+          border-radius: 0;
+        }
+      .glyph {
+          img {
+            @media(max-width: 768px) {
+              max-width: 200px;
+            }
+          }
+        }
+      p {
+        padding-top: 10px;
+        margin-top: 10px;
+        font-size: 1em;
+        text-indent: 25px;
+          @media(max-width: 768px){
+            font-size: .9em;
+            padding-top: 50px;
+          }
+          @media(max-width: 490px){
+            font-size: .8em;
+            padding-top: 0;
+          }
+        }
+      .glyph {
+          margin-bottom: 20px;
+        }
+  }
+// Badges css *****************************************************************************
+  #badges {
+    padding-top: 100px;
+    //padding-bottom: 200px;
+    color: green;
+    background-color: transparent;
+    min-height: 500px;
+    .badges-heading {
+        font-size: 1.5em;
+        text-align: center;
+        margin-bottom: 30px;
+        color: $white;
+        @media(max-width: 768px) {
+            font-size: 1.2em;
+        }
+    }
+    .badges-content {
+        margin-bottom: 25px;
+        @media(max-width: 768px){
+            margin-left: 25px;
+        }
+        @media(max-width: 490px){
+            margin-left: 15px;
+        }
+        h1 {
+            color: $orange;
+            font-size: 1em;
+            text-align: left;
+            margin: 20px 0 10px 10px;
+        }
+        a {
+            display: inline-block;
+            float: left;
+        }
+        .badge-content-inner {
+        }
+    }
+
+    .img-thumbnail {
+        background-color: $black-bg;
+        padding-left: 8px;
+        padding-right: 8px;
+        border: 1px solid $blue;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        height: 50px;
+        width: 52.5px;
+        margin: 3px;
+        &:hover, &:focus, &active {
+            outline: none;
+        }
+    }
+    .thumbnail {
+        background-color: black;
+        padding: 20px 10px;
+        border: 2px solid $blue;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        margin: 0;
+        -ms-overflow-y: hidden;
+        overflow-y: hidden;
+        img {
+            margin: 10px auto;
+            height: 100px;
+            width: 100px;
+          }
+        h1 {
+            color: $blue;
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+              @media(max-width: 768px){
+                font-size: 15px;
+              }
+          }
+        ul {
+            -webkit-padding-start: 10px;
+          }
+        li {
+            float: none !important;
+            display: block !important;
+            text-align: justify;
+          }
+        p, li{
+            font-size: .8em;
+            color: $blue;
+            @media(max-width: 768px){
+              font-size: .7em;
+            }
+          }
+        p {
+            margin: 10px;
+            text-align: justify;
+            text-indent: 25px;
+          }
+    }
+    .modal-sm {
+      max-width: 75%;
+      margin: 80px auto 0 auto;
+
+    }
+  }
+
+//Training css ****************************************************************************
+  #training {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    min-height: 500px;
+    color: $white;
+      h1{
+        font-size: 1.5em;
+          @media(max-width: 768px){
+            font-size: 1.2em;
+          }
+      }
+      .training-content {
+          background-color: $black-bg;
+          border: 1px solid $green;
+          min-height: 270px;
+          overflow: auto;
+      }
+      .welcome-msg {
+          h1 {
+              font-size: 1.2em;
+              margin: 15px;
+              text-align: left;
+           }
+          img {
+            max-width: 60%;
+            margin: 0 auto;
+              @media(max-width: 560px){
+                max-width: 80%;
+              }
+            @media(max-width: 560px){
+              max-width: 90%;
+            }
+          }
+      }
+      .training-links {
+          li {
+              color: $white;
+              font-size: 1em;
+              background-color: $green-bg;
+              border: 1px solid $green;
+              padding: 5px 10px;
+              margin-bottom: 10px;
+                @media(max-width: 768px){
+                  padding: 5px 4px;
+                }
+          }
+          a {
+            color: $white;
+            font-size: 1em;
+            padding: 0;
+              @media(max-width: 768px){
+                font-size: .8em;
+              }
+              @media(max-width: 490px){
+                font-size: .7em;
+              }
+              &:hover, &:focus{
+                outline: none;
+                background-color: transparent;
+                color: $orange;
+              }
+          }
+      }
+
+  }
+
+
+// footer css**********************************************************
+footer{
+  padding: 15px 0 0 0;
+  border-top: 2px solid $green;
+  p{
+      font-size: 1em;
+      @media(max-width: 768px){
+          font-size: .8em;
+      }
+  }
+}
+
+
+
+
+
+
+// ****************************************************************************************
+ul.banner-social-buttons {
+    margin-top: 0;
+    @media(max-width:1199px) {
+        margin-top: 15px;
+    }
+    @media(max-width:767px) {
+        li {
+            display: block;
+            margin-bottom: 20px;
+            padding: 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

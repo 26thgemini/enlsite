@@ -1,0 +1,24 @@
+{
+  "name": "ENLSite",
+  "title": "ENL PH Site",
+  "version": "1.0.0",
+  "homepage": "",
+  "author": "LG Corneja",
+  "license": {
+    "type": "",
+    "url": ""
+  },
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  }
+}
